@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package com.todoappma.proto.todo;
+
+option java_multiple_files = true;
+option java_package = "com.todoappma.proto.todo";
+option java_outer_classname = "TodoProto";
+
+service TodoServiceGrpc {
+  rpc CreateTodo (CreateTodoRequestGrpc) returns (TodoResponseGrpc);
+  rpc GetTodo (GetTodoRequestGrpc) returns (TodoResponseGrpc);
+  rpc GetAllTodos (GetAllTodosRequestGrpc) returns (GetAllTodosResponseGrpc);
+  rpc UpdateTodo (UpdateTodoRequestGrpc) returns (TodoResponseGrpc);
+  rpc DeleteTodo (DeleteTodoRequestGrpc) returns (DeleteTodoResponseGrpc);
+  rpc MarkTodoDone (MarkTodoDoneRequestGrpc) returns (TodoResponseGrpc);
+}
+
+message CreateTodoRequestGrpc {
+  string userId = 1;
+  string title = 2;
+  string description = 3;
+  string deadline = 4;
+}
+
+message GetTodoRequestGrpc {
+  string todoId = 1;
+  string userId = 2;
+}
+
+message GetAllTodosRequestGrpc {
+  string userId = 1;
+}
+
+message GetAllTodosResponseGrpc {
+  repeated TodoResponseGrpc todos = 1;
+}
+
+message UpdateTodoRequestGrpc {
+  string todoId = 1;
+  string userId = 2;
+  string title = 3;
+  string description = 4;
+  string deadline = 5;
+}
+
+message DeleteTodoRequestGrpc {
+  string todoId = 1;
+  string userId = 2;
+}
+
+message DeleteTodoResponseGrpc {
+  bool success = 1;
+}
+
+message MarkTodoDoneRequestGrpc {
+  string todoId = 1;
+  string userId = 2;
+}
+
+message TodoResponseGrpc {
+  string todoId = 1;
+  string userId = 2;
+  string title = 3;
+  string description = 4;
+  string deadline = 5;
+  bool done = 6;
+  string createdAt = 7;
+  string updatedAt = 8;
+}
