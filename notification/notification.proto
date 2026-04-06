@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package com.todoappma.proto.notification;
+
+option java_multiple_files = true;
+option java_package = "com.todoappma.proto.notification";
+option java_outer_classname = "NotificationProto";
+
+service NotificationServiceGrpc {
+  rpc SendEmailReminder (SendEmailReminderRequestGrpc) returns (SendEmailReminderResponseGrpc);
+}
+
+message SendEmailReminderRequestGrpc {
+  string userId = 1;
+  string userEmail = 2;
+  string todoId = 3;
+  string todoTitle = 4;
+  string deadline = 5;
+}
+
+message SendEmailReminderResponseGrpc {
+  bool success = 1;
+}

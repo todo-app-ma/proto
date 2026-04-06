@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package com.todoappma.proto.auth;
+
+option java_multiple_files = true;
+option java_package = "com.todoappma.proto.auth";
+option java_outer_classname = "AuthProto";
+
+service AuthServiceGrpc {
+  rpc Login (LoginRequestGrpc) returns (LoginResponseGrpc);
+  rpc Register (RegisterRequestGrpc) returns (RegisterResponseGrpc);
+  rpc RefreshToken (RefreshTokenRequestGrpc) returns (RefreshTokenResponseGrpc);
+  rpc ValidateToken (ValidateTokenRequestGrpc) returns (ValidateTokenResponseGrpc);
+}
+
+message LoginRequestGrpc {
+  string email = 1;
+  string password = 2;
+}
+
+message LoginResponseGrpc {
+  string accessToken = 1;
+  string refreshToken = 2;
+  string userId = 3;
+  string email = 4;
+}
+
+message RegisterRequestGrpc {
+  string email = 1;
+  string password = 2;
+}
+
+message RegisterResponseGrpc {
+  string userId = 1;
+  string email = 2;
+}
+
+message RefreshTokenRequestGrpc {
+  string refreshToken = 1;
+}
+
+message RefreshTokenResponseGrpc {
+  string accessToken = 1;
+  string refreshToken = 2;
+}
+
+message ValidateTokenRequestGrpc {
+  string accessToken = 1;
+}
+
+message ValidateTokenResponseGrpc {
+  bool valid = 1;
+  string userId = 2;
+  string email = 3;
+}
