@@ -6,7 +6,7 @@ option java_multiple_files = true;
 option java_package = "com.todoappma.proto.auth";
 option java_outer_classname = "AuthProto";
 
-service AuthServiceGrpc {
+service AuthService {
   rpc Login (LoginRequestGrpc) returns (LoginResponseGrpc);
   rpc Register (RegisterRequestGrpc) returns (RegisterResponseGrpc);
   rpc RefreshToken (RefreshTokenRequestGrpc) returns (RefreshTokenResponseGrpc);

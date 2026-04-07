@@ -6,7 +6,7 @@ option java_multiple_files = true;
 option java_package = "com.todoappma.proto.notification";
 option java_outer_classname = "NotificationProto";
 
-service NotificationServiceGrpc {
+service NotificationService {
   rpc SendEmailReminder (SendEmailReminderRequestGrpc) returns (SendEmailReminderResponseGrpc);
 }
 
